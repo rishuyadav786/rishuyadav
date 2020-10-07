@@ -1,0 +1,71 @@
+.sidenav {
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    z-index: 1;
+    top: 56px;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    padding-top: 20px;
+    
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: blue;
+  }
+  
+  .main {
+    margin-left: 250px; /* Same as the width of the sidenav */
+   
+    padding: 0px 10px;
+  }
+
+  .productName:hover{
+    text-decoration: none!important;
+  }
+  .rishuLink:hover{
+    color:red;
+    /* background-color: green; */
+    cursor: pointer;
+  }
+  .navlonk{
+    color:grey!important;
+  }
+.nav-link:hover{
+  color:red;
+  cursor: pointer;
+}
+.filterArea{
+  height: 150px;
+  overflow-y: scroll;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}

@@ -1,0 +1,13 @@
+.smallFont{
+    font-size: 10px;
+
+}
+.progress-bar{
+    height: 6px;
+}
+.progress{
+    height: 6px;
+}
+.checked{
+    color:orange;
+}

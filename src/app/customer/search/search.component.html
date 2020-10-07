@@ -1,0 +1,195 @@
+<script>
+  $(document).ready(function() {
+$('.mdb-select').materialSelect();
+});
+</script>
+
+<div class="sidenav">
+ 
+  <h6 style="margin-left:10px;">Filter By Price</h6>
+  <div class="filterArea">
+  <div *ngFor="let data of priceFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event.target.value,'price')"  value="{{data.hValue}}">
+    <label class="form-check-label" for="defaultCheck5">
+      {{data.label}}
+    </label>
+  </div>
+</div>
+  <hr />
+  
+  <h6 style="margin-left:10px;">Filter By Barnd</h6>
+  <div class="filterArea">
+  <div *ngFor="let data of brandFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" name="{{data.value}}"  (change)="filterMera($event.target.value,'brand')"  [value]="data.Value">
+    <label class="form-check-label" for="defaultCheck5">
+      {{data.label}}
+    </label>
+  </div>
+</div>
+<!-- <pre>{{brandFilter}}</pre> -->
+
+  <hr />
+  
+  <h6 style="margin-left:10px;">Filter By Ram</h6>
+  <div class="filterArea">
+  <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+    <label class="form-check-label" for="defaultCheck112">
+      {{data.label}}
+    </label>
+  </div>
+  </div>
+  <hr />
+ 
+  <h6 style="margin-left:10px;">Filter By Category</h6>
+  <div class="filterArea">
+  <div *ngFor="let data of ramFilter" class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox"  name="ram" (change)="filterMera($event.target.value,'ram')"  value="{{data.Value}}" id="defaultCheck112">
+    <label class="form-check-label" for="defaultCheck112">
+      {{data.label}}
+    </label>
+  </div>
+  </div>
+  <hr />
+  <h6 style="margin-left:10px;">Filter By User Ratings</h6>
+  <div class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+    <label class="form-check-label" for="defaultCheck2">
+      Default checkbox
+    </label>
+  </div>
+  <div class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+    <label class="form-check-label" for="defaultCheck3">
+      Default checkbox
+    </label>
+  </div>
+  <div class="form-check" style="margin-left:10px;">
+    <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+    <label class="form-check-label" for="defaultCheck4">
+      Default checkbox
+    </label>
+  </div>
+  <hr />
+
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+</div>
+<div class="main">
+
+  <div style="margin-top:61px;">
+    <!-- <div *ngIf="items2.length<=0">No Result Found....</div> -->
+    <!-- <div>Showing 1 – 10 of {{items2.length}} results for "{{SearchText}} "</div> -->
+    <div>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link " href="#">Sort By</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" (click)="sortBy('relevance')">Relevance</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('popularity')">Popularity</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('priceLowToHigh')"> Price -- Low to High</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('priceHighToLow')"> Price -- High to Low</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="sortBy('newest')"> Newest First</a>
+        </li>
+
+      </ul>
+    </div>
+    <hr />
+
+    <div *ngFor="let data of items2 | paginate: { itemsPerPage: 5, currentPage: pages }" class="list-group"
+      style="margin-bottom: 10px;">
+      <a class="list-group-item list-group-item-action">
+
+        <div class="container" *ngIf="data.category=='foods'">
+          <div class="row">
+            <div class="col-sm-3" style="padding-left: 50px;padding-right: 50px;">
+              <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 100px;width:60px!important">
+            </div>
+            <div class="col-sm-9">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><a class="productName" [routerLink]="['/details', data.id]" target="_blank">{{data.name}}
+                    ({{data.color}})</a></h5>
+                <small>
+                  <h6>{{data.price}}</h6>
+                </small>
+                <a (click)="addToCart(data)"
+              class="rishuLink" title="add to cart"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg></a>
+               
+              </div>
+              <p class="mb-1">{{data.brand}} </p>
+        
+
+              <small>{{data.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+                accessories</small>
+            </div>
+          </div>
+        </div>
+        <div class="container" *ngIf="data.category=='electronics'">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="assets/{{data.images}}" class="d-block w-100" alt="..." style="height: 190px;width:45%!important;margin-left: 20%;">
+            </div>
+            <div class="col-sm-9">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><a class="productName" [routerLink]="['/details', data.id]">{{data.name}}
+                    ({{data.color}})</a></h5>
+                <small>
+                  <h6>{{data.price}}</h6>
+                </small>
+                <a (click)="addToCart(data)"
+              class="rishuLink" title="add to cart"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg></a>
+               
+              </div>
+              <p class="mb-1">{{data.ram}} gb | {{data.rom}} gb Memory</p>
+              <p class="mb-1">{{data.screenLength}} {{data.displayType}} Display</p>
+              <p class="mb-1">{{data.camera}} camera</p>
+              <p class="mb-1">{{data.battery}} Battery</p>
+              <p class="mb-1">{{data.processor}} Processors</p>
+
+              <small>{{data.warranty}} manufacturer warranty for device and 6 months manufacturer warranty for in-box
+                accessories</small>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+  </div>
+</div>
